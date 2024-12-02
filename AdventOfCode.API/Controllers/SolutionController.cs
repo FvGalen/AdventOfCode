@@ -20,7 +20,7 @@ public class SolutionController : Controller
     {
         if(part < 1 || part > 2) 
         {
-            return BadRequest(new Exception("Only result for part 1 or two can be asked"));  
+            return BadRequest(new Exception("Only result for part one or two can be asked"));  
         }
 
         var command = new GetSolutionCommand(year, day, part);
