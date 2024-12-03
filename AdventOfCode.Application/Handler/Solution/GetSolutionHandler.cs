@@ -1,6 +1,5 @@
 ﻿using AdventOfCode.Application.Handler.Solution.Model;
 using AdventOfCode.Application.Result;
-using AdventOfCode.Application.Solution.Abstractions;
 using MediatR;
 using System.Reflection;
 
@@ -14,8 +13,8 @@ public class GetSolutionHandler : IRequestHandler<GetSolutionCommand, AdventResu
     {
         // Try and find the correct assembly
         var types = Assembly.GetExecutingAssembly().GetTypes()
-                               .Where(t => t.Namespace.StartsWith($"AdventOfCode.Application.Solution._{request.Year}.Day{request.Day:00}"))
-                               .ToList();
+                            .Where(t => t.Namespace != null &&  t.Namespace.StartsWith($"AdventOfCode.Application.Solution._{request.Year}.Day{request.Day:00}"))
+                            .ToList();
 
         if(types.Count == 0) 
         {
