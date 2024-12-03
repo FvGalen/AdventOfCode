@@ -11,10 +11,10 @@ public class Solution : ISolution
     {
         var input = new StreamReader($"{AppDomain.CurrentDomain.BaseDirectory}/Solution/2024/Day01/Input.txt").ReadToEnd();
 
-        var column1 = input.Split('\n').Select(l => Int32.Parse(l.Split("   ")[0])).Order();
-        var column2 = input.Split('\n').Select(l => Int32.Parse(l.Split("   ")[1])).Order();
+        var column1 = input.Split('\n').Select(l => long.Parse(l.Split("   ")[0])).Order();
+        var column2 = input.Split('\n').Select(l => long.Parse(l.Split("   ")[1])).Order();
 
-        var answer = Enumerable.Zip(column1, column2)
+        long answer = Enumerable.Zip(column1, column2)
                                .Select(p => Math.Abs(p.First - p.Second))
                                .Sum();
 
